@@ -23,7 +23,9 @@ public class CategoryController {
 //	@RequestMapping("/category")
 	public String getIndexPage(Model model) {
 		
+		log.debug("Spring Testing-Assignment");
 		log.debug("Getting Index page");
+		
 		
 		((Model) model).addAttribute("category",categoryService.getCategory());
 		return "category";
