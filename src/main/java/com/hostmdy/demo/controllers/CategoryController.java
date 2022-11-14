@@ -5,27 +5,29 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hostmdy.demo.services.CategoryService;
-import com.hostmdy.demo.services.RecipeService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-public class IndexController {
+public class CategoryController {
+	
+	private final CategoryService categoryService;
 
-	private final RecipeService recipeService;
-
-	public IndexController(RecipeService recipeService) {
-		this.recipeService = recipeService;
+	public CategoryController(CategoryService categoryService) {
+		super();
+		this.categoryService = categoryService;
 	}
-
-	@RequestMapping({ "", "/", "/recipe" })
-//	@RequestMapping("/recipe")
+	
+	@RequestMapping({"", "/", "/category"})
+//	@RequestMapping("/category")
 	public String getIndexPage(Model model) {
+		
 		log.debug("Getting Index page");
-
-		model.addAttribute("recipes", recipeService.getRecipes());
-
-		return "recipe";
+		
+		((Model) model).addAttribute("category",categoryService.getCategory());
+		return "category";
+		
 	}
+
 }

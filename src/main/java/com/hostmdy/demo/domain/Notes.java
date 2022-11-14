@@ -20,7 +20,7 @@ public class Notes {
     @OneToOne
     private Recipe recipe;
 
-    @Lob
+    @Lob	//for big obj anno
     private String recipeNotes;
 
 }
